@@ -1,11 +1,13 @@
 {% extends 'layout.html' %}
 {% block content %}
+<h1 class="mb-3">Posts By {{ user.username }} ({{ posts.total }})</h1>
+<!-- Getting username and prints number of posts he printed -->
     {% for post in posts.items %}
         <article class="media content-section">
             <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/') + post.author.image_file }}" alt="author image">
             <div class="media-body">
                 <div class="article-metadata">
-                    <a class="mr-2" href="{{ url_for('user_post', username = post.author.username) }}">{{ post.author.username }}</a>
+                    <a class="mr-2" href="{{ url_for('user_post',  username = post.author.username) }}">{{ post.author.username }}</a>
                     <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
                 </div>
                 <h3><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h3>
@@ -17,10 +19,10 @@
       {% if page_num %}
         {% if posts.page == page_num %}
         <!-- if we are in current page then use below bootstrap class is going to highlight when we are on that page -->
-          <a class="btn btn-info mb-4" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+          <a class="btn btn-info mb-4" href="{{ url_for('user_post',username=user.username, page=page_num) }}">{{ page_num }}</a>
         {% else %}
         <!-- if not show buttons below like this, -->
-          <a class="btn btn-outline-info mb-4" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('user_post',username=user.username, page=page_num) }}">{{ page_num }}</a>
         {% endif %}
       {% else %}
         ....
