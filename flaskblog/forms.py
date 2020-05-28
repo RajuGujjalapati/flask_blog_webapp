@@ -14,6 +14,7 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
+    '''then create a routes to use this forms'''
 #as per wtforms we are using below func. to validate
     def validate_username(self, username):
         user = User.query.filter_by(username = username.data).first()
@@ -32,6 +33,7 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+    '''then create a routes to use this forms'''
 
 class UpdateAccountForm(FlaskForm):
     username = StringField('Username',
@@ -39,6 +41,7 @@ class UpdateAccountForm(FlaskForm):
     email = StringField('Email',validators=[DataRequired(), Email()])
     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg','png','jpeg'])])
     submit = SubmitField('Update')
+    '''then create a routes to use this forms'''
 #as per wtforms we are using below func. to validate
     def validate_username(self, username):
         if username.data != current_user.username:
@@ -59,3 +62,22 @@ class PostForm(FlaskForm):
     content =  TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')
     
+class RequestResetForm(FlaskForm):
+    email = StringField('Email',
+                        validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        '''if user is none means if email not found in database then we 
+        are allowing to create another account'''
+        if user is None:
+            raise ValidationError('There is no account with that email. You must register first.')
+
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password',
+                                     validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Reset Password')
+    '''then create a routes to use this forms'''
