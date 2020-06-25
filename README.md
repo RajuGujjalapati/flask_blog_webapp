@@ -1,5 +1,6 @@
 # flask_blog_webapp
-A blog web app was developed using flask.
+A blog web application was developed using flask.
+
 # what does it do?
 Helps user to post and able to see others posts
 # what did you learn new things here?
