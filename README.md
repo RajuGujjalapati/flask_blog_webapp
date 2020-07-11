@@ -1,5 +1,5 @@
 # flask_blog_webapp
-A blog web application was developed using flask.
+A blog web application was developed using **Flask**.
 
 # what does it do?
 Helps user to post and able to see others posts
