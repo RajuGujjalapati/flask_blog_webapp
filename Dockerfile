@@ -11,7 +11,7 @@ RUN apt-get install build-essential -y libssl-dev -y libffi-dev -y python3-dev -
 COPY requirements.txt /home
 RUN pip install wheel
 RUN pip install -r /home/requirements.txt
-COPY FLASK_BLOG_WEBAPP WEB_APP
+COPY FLASKAPP WEB_APP
 WORKDIR /WEB_APP
 ENTRYPOINT [ "python3", "run.py" ]
 EXPOSE 3000 5000
