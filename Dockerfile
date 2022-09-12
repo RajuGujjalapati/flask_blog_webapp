@@ -10,7 +10,7 @@ RUN apt install --fix-broken
 RUN apt-get install build-essential -y libssl-dev -y libffi-dev -y python3-dev -y
 COPY requirements.txt /home
 RUN pip install wheel
-RUN python3.7 -m pip install -r /home/requirements.txt
+RUN pip install -r /home/requirements.txt
 COPY FLASK_BLOG_WEBAPP WEB_APP
 WORKDIR /WEB_APP
 ENTRYPOINT [ "python3", "run.py" ]
