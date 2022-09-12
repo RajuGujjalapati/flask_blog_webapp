@@ -1,7 +1,7 @@
 FROM centos:latest
-RUN sudo apt install net-tools
-RUN sudo apt install httpd
-RUN sudo apt install python3
+RUN apk add install net-tools
+RUN apk add install httpd
+RUN apk add install python3
 COPY requirements.txt /home
 RUN pip3 install -r /home/requirements.txt
 COPY FLASK_BLOG_WEBAPP WEB_APP
