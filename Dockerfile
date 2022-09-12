@@ -5,6 +5,7 @@ RUN apt-get update
 RUN apt-get install python3-pip -y python3-wheel -y
 RUN apt-get install zlib1g-dev -y libjpeg-dev -y libpng-dev -y
 RUN apt-get install gcc -y libpq-dev -y
+RUN apt install -y libgl1-mesa-glx
 COPY requirements.txt /home
 RUN pip install wheel
 RUN pip install -r /home/requirements.txt
