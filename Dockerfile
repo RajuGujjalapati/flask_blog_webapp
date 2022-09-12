@@ -1,5 +1,4 @@
-# FROM centos:latest
-FROM python:3.7
+FROM ubuntu
 RUN apt-get update
 RUN apt-get install net-tools
 RUN apt-get install httpd
