@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM python:3.7
 RUN apt-get update
 RUN apt-get install net-tools
 RUN apt-get update
