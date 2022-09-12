@@ -1,5 +1,6 @@
 FROM centos:latest
-RUN apk add net-tools
+RUN apt-get update
+RUN apt-get install net-tools
 RUN apk add httpd
 RUN apk add python3
 COPY requirements.txt /home
