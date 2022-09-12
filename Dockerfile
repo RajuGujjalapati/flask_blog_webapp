@@ -1,7 +1,7 @@
 FROM ubuntu
 RUN apt-get update
 RUN apt-get install net-tools
-RUN sudo add-apt-repository universe
+RUN add-apt-repository universe
 RUN apt-get update
 RUN apt-get install python3-pip -y
 RUN apt-get install pip3
