@@ -1,7 +1,9 @@
 FROM ubuntu
 RUN apt-get update
 RUN apt-get install net-tools
-RUN apt-get install python3 -y
+RUN sudo add-apt-repository universe
+RUN apt-get update
+RUN apt-get install python3-pip -y
 RUN apt-get install pip3
 COPY requirements.txt /home
 RUN pip3 install -r /home/requirements.txt
