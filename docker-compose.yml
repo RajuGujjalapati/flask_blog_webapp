@@ -1,0 +1,5 @@
+web:
+  build: .
+  container_name: raju_blog
+  ports:
+  - "5000:5000"
