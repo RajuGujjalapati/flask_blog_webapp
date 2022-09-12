@@ -6,5 +6,5 @@ COPY requirements.txt /home
 RUN pip3 install -r /home/requirements.txt
 COPY FLASK_BLOG_WEBAPP WEB_APP
 WORKDIR /WEB_APP
-ENTRYPOINT [ "python3", "app.py" ]
+ENTRYPOINT [ "python3", "run.py" ]
 EXPOSE 3000 5000
