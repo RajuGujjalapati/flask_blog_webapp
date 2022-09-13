@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: raju_metadata
+spec:
+  template:
+    metadata:
+      name: raju_app-pod
+    spec:
+      containers:
+      - name: raju_webapp
+        image: flaskapp_web
+        imagePullPolicy: Never
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: raju-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    bb: web
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30001
